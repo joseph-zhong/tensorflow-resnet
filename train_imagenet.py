@@ -1,5 +1,3 @@
-import skimage.io  # bug. need to import this before tensorflow
-import skimage.transform  # bug. need to import this before tensorflow
 from resnet_train import train
 import tensorflow as tf
 import time

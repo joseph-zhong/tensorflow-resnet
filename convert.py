@@ -5,7 +5,7 @@ import re
 import caffe
 import numpy as np
 import tensorflow as tf
-import skimage.io
+import cv2
 from caffe.proto import caffe_pb2
 from synset import *
 
@@ -80,12 +80,12 @@ def assert_almost_equal(caffe_tensor, tf_tensor):
 # returns image of shape [224, 224, 3]
 # [height, width, depth]
 def load_image(path, size=224):
-    img = skimage.io.imread(path)
+    img = cv2.imread(path)
     short_edge = min(img.shape[:2])
     yy = int((img.shape[0] - short_edge) / 2)
     xx = int((img.shape[1] - short_edge) / 2)
     crop_img = img[yy:yy + short_edge, xx:xx + short_edge]
-    resized_img = skimage.transform.resize(crop_img, (size, size))
+    resized_img = cv2.resize(crop_img, (size, size))
     return resized_img
 
 
